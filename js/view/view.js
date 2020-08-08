@@ -20,7 +20,7 @@ function viewRoles() {
 }
 
 function viewAllEmployees() {
-    var query = "SELECT roles.id, first_name, last_name, title, department_name, department_id, salary, manager_id FROM department INNER JOIN roles ON department.id = roles.department_id INNER JOIN employee ON roles.id = employee.role_id ORDER BY roles.id;";
+    var query = "SELECT employee.id, first_name, last_name, title, department_name, department_id, salary, manager_id FROM department INNER JOIN roles ON department.id = roles.department_id INNER JOIN employee ON roles.id = employee.role_id ORDER BY employee.id ASC;";
     connection.query(query, function (err, res) {
         console.table(res);
         init.init();

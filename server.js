@@ -1,9 +1,9 @@
-var mysql = require("mysql");
 var inquirer = require("inquirer");
 var cTable = require("console.table");
 var connection = require("./db/connect")
 var view = require("./js/view/view");
 var add = require("./js/add/add");
+var update = require("./js/update/update");
 
 welcome();
 
@@ -41,19 +41,23 @@ function init() {
             type: "list",
             message: "What would you like to do?",
             choices: [
-                "test",
                 "View All Employees",
                 "View Departments",
                 "View Roles",
+                "Add Employee",
                 "Add Department",
                 "Add Role",
-                "Add Employee",
+                "Update Role",
                 "Exit"
             ]
         }).then((answer) => {
             switch (answer.action) {
                 case "test":
                     add.test();
+                    break;
+
+                case "testUpdate":
+                    update.testUpdate();
                     break;
 
                 case "View All Employees":
@@ -68,6 +72,10 @@ function init() {
                     view.viewRoles();
                     break;
 
+                case "Add Employee":
+                    add.addEmployee();
+                    break;
+
                 case "Add Department":
                     add.addDepartment();
                     break;
@@ -76,8 +84,9 @@ function init() {
                     add.addRole();
                     break;
 
-                case "Add Employee":
-                    add.addEmployee();
+
+                case "Update Role":
+                    update.updateRole();
                     break;
 
                 default:
