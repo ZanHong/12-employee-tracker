@@ -42,6 +42,8 @@ License for this project: MIT
 
 ![application demo](./Assets/employee-tracker-demo.gif)
 
+Link for the full video [here](https://recordit.co/KNE4SGir4q)
+
 
 ## Questions
 
