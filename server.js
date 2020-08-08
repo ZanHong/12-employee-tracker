@@ -52,14 +52,6 @@ function init() {
             ]
         }).then((answer) => {
             switch (answer.action) {
-                case "test":
-                    add.test();
-                    break;
-
-                case "testUpdate":
-                    update.testUpdate();
-                    break;
-
                 case "View All Employees":
                     view.viewAllEmployees();
                     break;

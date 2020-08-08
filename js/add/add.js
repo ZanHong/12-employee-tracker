@@ -11,7 +11,6 @@ function addDepartment() {
         }).then(function (answer) {
             var query = "INSERT INTO department (department_name) VALUES (?)";
             connection.query(query, [answer.departmentAdd], function (err, res) {
-                // console.log(res);
                 console.log("New department added! \n");
                 init.init();
             });
@@ -28,8 +27,6 @@ function addRole() {
             deptName.push(res[i].department_name);
             deptInfo.push(res[i]);
         };
-        // console.log(deptName);
-        // console.log(deptInfo);
 
         inquirer.prompt([
             {
@@ -56,7 +53,6 @@ function addRole() {
             }
 
         ]).then(function (answer) {
-            // console.log(answer);
             var deptID;
             for (var i = 0; i < deptInfo.length; i++) {
                 if (answer.selectDepartment === deptInfo[i].department_name) {
@@ -114,7 +110,6 @@ async function getManagerName() {
     for (var i = 0; i < data.length; i++) {
         managerNameArr.push(data[i].first_name + " " + data[i].last_name);
     }
-    // console.log(managerNameArr);
     return managerNameArr;
 };
 
@@ -149,22 +144,18 @@ async function addEmployee() {
                 choices: [...managerName, "This is the manager"]
             }
         ]).then(function (answer) {
-            // console.log(answer);
-            // console.log(managerInfo);
             var roleID;
             var managerID;
 
             for (var i = 0; i < roleInfo.length; i++) {
                 if (answer.role === roleInfo[i].title) {
                     roleID = roleInfo[i].id;
-                    // console.log(roleID);
                 }
             };
 
             for (var i = 0; i < managerInfo.length; i++) {
                 if (answer.managerName === managerInfo[i].first_name + " " + managerInfo[i].last_name) {
                     managerID = managerInfo[i].id;
-                    // console.log("Manager ID is " + managerID);
                 }
             };
 
@@ -182,8 +173,6 @@ async function addEmployee() {
                     init.init();
                 }
             );
-
-            // init.init();
         })
 };
 
