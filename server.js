@@ -2,25 +2,8 @@ var mysql = require("mysql");
 var inquirer = require("inquirer");
 var cTable = require("console.table");
 var connection = require("./db/connect")
-var viewEmployees = require("./js/view/viewEmployees");
-var add = require("./js/add/addEmployees");
-
-// var connection = mysql.createConnection({
-//     host: "localhost",
-
-//     port: "3306",
-
-//     user: "root",
-
-//     password: "mok920322",
-
-//     database: "employee_trackerDB"
-// });
-
-// connection.connect((err) => {
-//     if (err) throw err;
-//     console.log("connected as id " + connection.threadId + "\n");
-// });
+var view = require("./js/view/view");
+var add = require("./js/add/add");
 
 welcome();
 
@@ -56,16 +39,41 @@ function init() {
         .prompt({
             name: "action",
             type: "list",
-            message: "What would yu like to do?",
+            message: "What would you like to do?",
             choices: [
+                "test",
                 "View All Employees",
+                "View Departments",
+                "View Roles",
+                "Add Department",
+                "Add Role",
                 "Add Employee",
                 "Exit"
             ]
         }).then((answer) => {
             switch (answer.action) {
+                case "test":
+                    add.test();
+                    break;
+
                 case "View All Employees":
-                    viewEmployees.viewAllEmployees();
+                    view.viewAllEmployees();
+                    break;
+
+                case "View Departments":
+                    view.viewDepartment();
+                    break;
+
+                case "View Roles":
+                    view.viewRoles();
+                    break;
+
+                case "Add Department":
+                    add.addDepartment();
+                    break;
+
+                case "Add Role":
+                    add.addRole();
                     break;
 
                 case "Add Employee":
@@ -80,12 +88,3 @@ function init() {
 };
 
 module.exports.init = init;
-
-// function viewEmployees() {
-//     var query = "SELECT first_name, last_name,title, department_name, salary, role_id, manager_id FROM department INNER JOIN roles ON department.id = roles.department_id INNER JOIN employee ON roles.id = employee.role_id";
-//     connection.query(query, function (err, res) {
-//         console.table(res);
-//         init();
-//     })
-
-// }
