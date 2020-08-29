@@ -15,7 +15,7 @@ npm install
 
 ## Usage
 
-1. Run 'node server.js' or 'npn start' in terminal
+1. Run 'node server.js' or 'npm start' in terminal
 2. There will be a list of options to get started:
    - View All Employees: generates a console.table for all the data
    - View Departments: generates a console.table for the registered departments
